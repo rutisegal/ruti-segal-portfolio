@@ -1,10 +1,21 @@
 import React from 'react';
-import { INITIAL_PROJECTS } from '../constants';
 import ProjectCard from './ProjectCard';
 
-const ProjectsGallery: React.FC = () => {
-  const projects = INITIAL_PROJECTS;
+// Hardcoded static data for the portfolio
+const projects = [
+  {
+    id: "proj_1",
+    title: "Two-Pass Assembler for Custom Architecture",
+    description: "Bridging the gap between human-readable code and machine execution. A high-performance, two-pass assembler built from scratch in C, featuring custom memory management, complex instruction parsing, and binary generation for a unique CPU architecture\n\nKey Features\n• Core Logic: Implemented a full two-pass translation process (Symbol Table & Code Generation)\n• System Mastery: Direct memory management and bitwise operations in a Linux environment\n• Robustness: Advanced error handling and edge-case validation",
+    technologies: ["C Programming", "System Programming", "Low-Level Linux", "Memory Management", "Data Structures", "Algorithms"],
+    imageUrl: "https://picsum.photos/id/0/800/600",
+    githubLink: "#",
+    videoLink: "#",
+    createdAt: Date.now()
+  }
+];
 
+const ProjectsGallery: React.FC = () => {
   return (
     <section id="projects" className="py-24 bg-dark-900 border-t border-dark-800 relative">
       <div className="max-w-7xl mx-auto px-6">
