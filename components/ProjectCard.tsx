@@ -21,11 +21,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group bg-dark-800 overflow-hidden transition-all duration-300 border border-dark-700 hover:border-neon-purple hover:shadow-glow-purple flex flex-col h-full relative"
+      className="group bg-dark-800 overflow-hidden transition-all duration-300 border border-dark-700 hover:border-neon-purple hover:shadow-glow-purple flex flex-col h-full relative z-10"
     >
       {/* Tech corner accent */}
       <div className="absolute top-0 right-0 w-0 h-0 border-t-[30px] border-t-neon-purple border-l-[30px] border-l-transparent z-30 opacity-0 group-hover:opacity-100 transition-opacity"></div>

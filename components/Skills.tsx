@@ -46,7 +46,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-24 bg-dark-900 relative border-t border-dark-800">
+    <section id="skills" className="py-24 bg-dark-900 relative border-t border-dark-800 z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="font-display text-4xl font-bold text-white mb-6 tracking-widest uppercase">Tech Stack</h2>
@@ -59,11 +59,11 @@ const Skills: React.FC = () => {
             return (
               <motion.div
                 key={skill.name}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 1, scale: 1 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-none relative"
+                className="group cursor-none relative z-10"
               >
                 {/* Magical Rune Orb */}
                 <div 

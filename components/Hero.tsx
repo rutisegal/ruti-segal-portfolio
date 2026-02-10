@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden z-10">
       {/* Dark Magical Background Effects */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon-purple rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse-slow" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-neon-cyan rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse-slow" style={{ animationDelay: '2s' }} />
@@ -45,11 +45,12 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center justify-center">
+        {/* Forced opacity: 1 to ensure it never gets stuck hidden */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full"
+          className="w-full relative z-20"
         >
           {/* Main Headline */}
           <h1 className="font-display text-4xl md:text-6xl font-black text-white mb-6 tracking-wider">

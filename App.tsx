@@ -7,17 +7,20 @@ import Home from './pages/Home';
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="hidden sm:block">
+      <div className="hidden sm:block z-[9999]">
         <CustomCursor />
       </div>
       
-      <Navigation />
-      
-      <div className="pt-0">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+      {/* High z-index wrapper ensures app content floats above the #root background */}
+      <div className="relative z-10 w-full min-h-screen">
+        <Navigation />
+        
+        <div className="pt-0">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
       </div>
     </HashRouter>
   );
