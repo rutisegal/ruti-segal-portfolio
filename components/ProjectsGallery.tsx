@@ -1,8 +1,9 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
+import { Project } from '../types';
 
 // Hardcoded static data for the portfolio
-const projects = [
+const projects: Project[] = [
   {
     id: "proj_1",
     title: "Two-Pass Assembler for Custom Architecture",
