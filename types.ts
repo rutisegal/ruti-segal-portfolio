@@ -1,15 +1,2 @@
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  imageUrl: string;
-  githubLink: string;
-  videoLink: string;
-  createdAt: number;
-}
-
-export interface User {
-  email: string;
-  isAuthenticated: boolean;
-}
+// Deprecated: Types moved directly into component files to prevent import errors during Vercel build
+export {};

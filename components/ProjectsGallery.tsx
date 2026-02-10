@@ -1,6 +1,17 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import { Project } from '../types';
+
+// Localized interface to prevent import resolution failures on Vercel
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  imageUrl: string;
+  githubLink: string;
+  videoLink: string;
+  createdAt: number;
+}
 
 // Hardcoded static data for the portfolio
 const projects: Project[] = [

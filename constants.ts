@@ -1,4 +1,13 @@
-import { Project } from './types';
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  imageUrl: string;
+  githubLink: string;
+  videoLink: string;
+  createdAt: number;
+}
 
 export const CONTACT_INFO = {
   PHONE: "0556798258",

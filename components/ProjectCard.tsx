@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Video, ChevronDown, ChevronUp } from 'lucide-react';
-import { Project } from '../types';
+
+// Localized interface to prevent import resolution failures on Vercel
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  imageUrl: string;
+  githubLink: string;
+  videoLink: string;
+  createdAt: number;
+}
 
 interface ProjectCardProps {
   project: Project;
