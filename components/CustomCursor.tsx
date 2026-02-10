@@ -12,6 +12,8 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target || !target.tagName) return; // Safety check
+      
       if (
         target.tagName.toLowerCase() === 'button' ||
         target.tagName.toLowerCase() === 'a' ||

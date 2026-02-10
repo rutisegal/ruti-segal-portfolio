@@ -11,13 +11,18 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Safety fallbacks to prevent runtime crashes if data is missing
+  const description = project.description || "";
+  const title = project.title || "Untitled Project";
+  const technologies = project.technologies || [];
+
   // Split description if it contains double newlines, else use character limit
-  const hasSections = project.description.includes('\n\n');
+  const hasSections = description.includes('\n\n');
   const previewText = hasSections 
-    ? project.description.split('\n\n')[0] 
-    : project.description.slice(0, 150) + (project.description.length > 150 ? '...' : '');
+    ? description.split('\n\n')[0] 
+    : description.slice(0, 150) + (description.length > 150 ? '...' : '');
     
-  const canExpand = hasSections || project.description.length > 150;
+  const canExpand = hasSections || description.length > 150;
 
   return (
     <motion.div
@@ -33,8 +38,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       <div className="relative h-56 overflow-hidden border-b border-dark-700 shrink-0">
         <div className="absolute inset-0 bg-dark-700 animate-pulse" />
         <img 
-          src={project.imageUrl || `https://picsum.photos/seed/${project.id}/800/600`} 
-          alt={project.title}
+          src={project.imageUrl || `https://picsum.photos/seed/${project.id || index}/800/600`} 
+          alt={title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 relative z-10 opacity-70 group-hover:opacity-100 filter grayscale group-hover:grayscale-0"
           loading="lazy"
           onError={(e) => {
@@ -56,11 +61,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       </div>
 
       <div className="p-8 flex flex-col flex-grow relative z-10 bg-dark-800">
-        <h3 className="font-display text-xl font-bold text-white mb-3 tracking-wide">{project.title}</h3>
+        <h3 className="font-display text-xl font-bold text-white mb-3 tracking-wide">{title}</h3>
         
         <div className="mb-6 flex-grow">
           <p className="text-gray-400 leading-relaxed font-light text-sm whitespace-pre-line">
-            {isExpanded ? project.description : previewText}
+            {isExpanded ? description : previewText}
             {!isExpanded && canExpand && !hasSections && <span>...</span>}
           </p>
           
@@ -79,9 +84,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
         
         <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-dark-700">
-          {project.technologies.map((tech, i) => (
+          {technologies.map((tech, i) => (
             <span 
-              key={tech} 
+              key={`${tech}-${i}`} 
               className={`px-3 py-1 bg-dark-900 border ${i % 2 === 0 ? 'border-neon-cyan/30 text-neon-cyan' : 'border-neon-purple/30 text-neon-purple'} text-xs font-display tracking-widest uppercase`}
             >
               {tech}
