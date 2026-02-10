@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { UserCircle, Code2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Code2 } from 'lucide-react';
 
 const Navigation: React.FC = () => {
-  const location = useLocation();
-  const isAdminPath = location.pathname.startsWith('/admin') || location.pathname === '/dashboard';
-
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -25,20 +22,9 @@ const Navigation: React.FC = () => {
           </Link>
           
           <div className="flex gap-8 items-center">
-            {!isAdminPath ? (
-              <>
-                <button onClick={() => handleScroll('hero')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-pink transition-colors uppercase">About</button>
-                <button onClick={() => handleScroll('projects')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-purple transition-colors uppercase">Projects</button>
-                <button onClick={() => handleScroll('contact')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-cyan transition-colors uppercase">Contact</button>
-                <Link to="/admin" className="p-2 text-gray-500 hover:text-neon-purple transition-colors" title="System Override">
-                  <UserCircle size={22} />
-                </Link>
-              </>
-            ) : (
-              <Link to="/" className="font-display text-xs tracking-[0.2em] text-neon-cyan hover:text-white transition-colors uppercase flex items-center gap-2">
-                &larr; Return to Main
-              </Link>
-            )}
+            <button onClick={() => handleScroll('hero')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-pink transition-colors uppercase">About</button>
+            <button onClick={() => handleScroll('projects')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-purple transition-colors uppercase">Projects</button>
+            <button onClick={() => handleScroll('contact')} className="font-display text-xs tracking-[0.2em] text-gray-400 hover:text-neon-cyan transition-colors uppercase">Contact</button>
           </div>
         </div>
       </div>
